@@ -1,16 +1,26 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import { TypegooseModule } from "nestjs-typegoose";
 
 import { AuthModule } from './modules/auth/auth.module';
 import { TopPageModule } from './modules/top-page/top-page.module';
 import { ProductModule } from './modules/product/product.module';
 import { ReviewModule } from './modules/review/review.module';
+import { getMongoConfig } from "./configs/mongo.config";
 
 @Module({
-  imports: [AuthModule, TopPageModule, ProductModule, ReviewModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot(),
+    TypegooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: getMongoConfig,
+    }),
+    AuthModule,
+    TopPageModule,
+    ProductModule,
+    ReviewModule
+  ],
 })
 
 export class AppModule {
