@@ -6,7 +6,6 @@ export class AuthController {
 
   @Post('register')
   async register(@Body() dto: AuthDto) {
-
   }
 
   @HttpCode(200)

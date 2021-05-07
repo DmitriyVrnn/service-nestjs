@@ -23,5 +23,4 @@ import { getMongoConfig } from "./configs/mongo.config";
   ],
 })
 
-export class AppModule {
-}
+export class AppModule { }
