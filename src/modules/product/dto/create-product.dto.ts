@@ -51,5 +51,5 @@ export class CreateProductDto {
   @IsArray()
   @ValidateNested()
   @Type(() => ProductCharacteristicDto)
-  characters: ProductCharacteristicDto[];
+  characteristic: ProductCharacteristicDto[];
 }
