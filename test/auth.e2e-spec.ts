@@ -4,7 +4,6 @@ import { AppModule } from '../src/app.module';
 import * as request from 'supertest';
 import { mongoose } from '@typegoose/typegoose';
 import { AuthDto } from '../src/modules/auth/dto/auth.dto';
-import { REVIEW_NOT_FOUND } from '../src/modules/review/review.contstants';
 import {
   USER_NOT_FOUND_ERROR,
   WRONG_PASSWORD_ERROR,

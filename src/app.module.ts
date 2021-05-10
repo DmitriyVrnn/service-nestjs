@@ -7,6 +7,7 @@ import { TopPageModule } from './modules/top-page/top-page.module';
 import { ProductModule } from './modules/product/product.module';
 import { ReviewModule } from './modules/review/review.module';
 import { getMongoConfig } from './configs/mongo.config';
+import { ProductService } from './module/product/product.service';
 
 @Module({
   imports: [
@@ -21,5 +22,6 @@ import { getMongoConfig } from './configs/mongo.config';
     ProductModule,
     ReviewModule,
   ],
+  providers: [ProductService],
 })
 export class AppModule {}
