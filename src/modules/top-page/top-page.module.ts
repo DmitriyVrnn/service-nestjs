@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 
 import { TopPageController } from './top-page.controller';
-import { TypegooseModule } from "nestjs-typegoose";
-import { TopPageModel } from "./top-page.model";
+import { TypegooseModule } from 'nestjs-typegoose';
+import { TopPageModel } from './top-page.model';
 
 @Module({
   controllers: [TopPageController],
@@ -11,10 +11,10 @@ import { TopPageModel } from "./top-page.model";
       {
         typegooseClass: TopPageModel,
         schemaOptions: {
-          collection: 'topPage'
-        }
-      }
-    ])
+          collection: 'topPage',
+        },
+      },
+    ]),
   ],
 })
 export class TopPageModule {}

@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from "@nestjs/config";
-import { TypegooseModule } from "nestjs-typegoose";
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypegooseModule } from 'nestjs-typegoose';
 
 import { AuthModule } from './modules/auth/auth.module';
 import { TopPageModule } from './modules/top-page/top-page.module';
 import { ProductModule } from './modules/product/product.module';
 import { ReviewModule } from './modules/review/review.module';
-import { getMongoConfig } from "./configs/mongo.config";
+import { getMongoConfig } from './configs/mongo.config';
 
 @Module({
   imports: [
@@ -19,8 +19,7 @@ import { getMongoConfig } from "./configs/mongo.config";
     AuthModule,
     TopPageModule,
     ProductModule,
-    ReviewModule
+    ReviewModule,
   ],
 })
-
-export class AppModule { }
+export class AppModule {}
