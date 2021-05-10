@@ -1,22 +1,19 @@
-import { ConfigService } from '@nestjs/config';
 import { TypegooseModuleOptions } from 'nestjs-typegoose';
 
-export const getMongoConfig = async (
-  configService: ConfigService,
-): Promise<TypegooseModuleOptions> => {
+export const getMongoConfig = async (): Promise<TypegooseModuleOptions> => {
   return {
-    uri: getMongoString(configService),
+    uri: getMongoString(),
     ...getMongoOptions(),
   };
 };
 
-const getMongoString = (configService: ConfigService) =>
+const getMongoString = () =>
   'mongodb://' +
-  configService.get('MONGO_HOST') +
+  process.env.MONGO_HOST +
   ':' +
-  configService.get('MONGO_PORT') +
+  process.env.MONGO_PORT +
   '/' +
-  configService.get('MONGO_AUTHDATABASE');
+  process.env.MONGO_AUTHDATABASE;
 
 const getMongoOptions = () => ({
   useNewUrlParser: true,
