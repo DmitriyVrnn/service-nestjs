@@ -32,7 +32,6 @@ export class AuthService {
     email: string,
     password: string,
   ): Promise<Pick<UserModel, 'email'>> {
-    console.log(email);
     const user = await this.findUser(email);
     if (!user) {
       throw new UnauthorizedException(USER_NOT_FOUND_ERROR);
