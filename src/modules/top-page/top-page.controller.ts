@@ -8,20 +8,22 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { TopPageModel } from './top-page.model';
 import { FindTopPageDto } from './dto/find-top-page.dto';
 import { TopPageService } from './top-page.service';
 import { CreateTopPageDto } from './dto/create-top-page.dto';
 import { IdValidationPipe } from '../../pipes/id-validation.pipe';
 import { PAGE_NOT_FOUND } from './top-page.constants';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 
 @Controller('top-page')
 export class TopPageController {
   constructor(private readonly topPageService: TopPageService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post('create')
   async create(@Body() dto: CreateTopPageDto) {
     return this.topPageService.create(dto);
@@ -45,6 +47,7 @@ export class TopPageController {
     return page;
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   async delete(@Param('id') id: string) {
     const deletedPage = await this.topPageService.deleteById(id);
@@ -53,6 +56,7 @@ export class TopPageController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   async patch(@Param('id') id: string, @Body() dto: CreateTopPageDto) {
     const updatedPage = await this.topPageService.updateById(id, dto);
