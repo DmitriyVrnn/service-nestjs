@@ -1,5 +1,6 @@
 import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 import { prop } from '@typegoose/typegoose';
+import { Types } from 'mongoose';
 
 export enum TopLevelCategory {
   Courses,
@@ -31,8 +32,7 @@ export class TopAdvantage {
 }
 
 export class TopPageModel extends TimeStamps {
-  @prop()
-  _id: string;
+  _id: Types.ObjectId;
 
   @prop({ enum: TopLevelCategory })
   firstCategory: TopLevelCategory;
